@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>QR Code</title>
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: #ffffff;
+    }
+    img {
+      max-width: 100vw;
+      max-height: 100vh;
+    }
+  </style>
+</head>
+<body>
+
+  <img id="img" alt="">
+
+  <script>
+    const params = new URLSearchParams(window.location.search);
+    let dataUri = params.get('img');
+
+    if (dataUri) {
+      dataUri = dataUri.trim().replace(/ /g, '+');
+      if (dataUri.startsWith('data:image/')) {
+        document.getElementById('img').src = dataUri;
+      }
+    }
+  </script>
+
+</body>
+</html>
